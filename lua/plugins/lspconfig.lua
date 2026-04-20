@@ -1,0 +1,79 @@
+return {
+  {
+    'mason-org/mason-lspconfig.nvim',
+    opts = {
+      ensure_installed = {
+        'lua_ls',
+        'astro',
+        'html',
+        'cssls',
+        'emmet_language_server',
+        'svelte',
+        'ts_ls',
+        'tailwindcss',
+        'prismals',
+      },
+    },
+    dependencies = {
+      {
+        'mason-org/mason.nvim',
+        opts = {
+          ui = {
+            icons = {
+              package_installed = '✓',
+              package_pending = '➜',
+              package_uninstalled = '✗',
+            },
+          },
+        },
+      },
+      {
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        opts = {
+          ensure_installed = {
+            'stylua',
+            'prettierd',
+          },
+        },
+      },
+      'neovim/nvim-lspconfig',
+      { 'j-hui/fidget.nvim', opts = {} },
+    },
+  },
+  {
+    'neovim/nvim-lspconfig',
+    init = function()
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            runtime = {
+              version = 'LuaJIT',
+            },
+            telemetry = { enable = false },
+            workspace = {
+              library = {
+                vim.env.VIMRUNTIME,
+              },
+            },
+          },
+        },
+      })
+    end,
+    config = function()
+      vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
+        callback = function(event)
+          local map = function(keys, func, desc, mode)
+            mode = mode or 'n'
+            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+          end
+
+          map('<K>', vim.lsp.buf.hover, 'Hover documentation')
+          map('grn', vim.lsp.buf.rename, 'Rename')
+          map('gra', vim.lsp.buf.code_action, 'Code action', { 'n', 'x' })
+          map('grD', vim.lsp.buf.declaration, 'Go to declaration')
+        end,
+      })
+    end,
+  },
+}
