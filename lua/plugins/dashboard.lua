@@ -25,9 +25,10 @@ return {
           [[                                                 ]],
         },
         center = {
-          menu_item('New file', 'n', 'ene | startinsert'),
           menu_item('Find file', 'f', 'Telescope find_files'),
+          menu_item('New file', 'n', 'ene | startinsert'),
           menu_item('Recent files', 'r', 'Telescope oldfiles'),
+          menu_item('Restore Session', 's', function() require('persistence').load() end),
           menu_item('Plugins', 'l', 'Lazy'),
           menu_item('Quit', 'q', 'qa'),
         },
