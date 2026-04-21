@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
   spec = {
-    { 'github/copilot.vim' },
     { 'NMAC427/guess-indent.nvim', opts = {} },
     { 'windwp/nvim-ts-autotag', opts = {} },
     { 'vyfor/cord.nvim' },
