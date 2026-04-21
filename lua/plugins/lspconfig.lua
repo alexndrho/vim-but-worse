@@ -8,8 +8,8 @@ return {
         'html',
         'cssls',
         'emmet_language_server',
-        'svelte',
         'ts_ls',
+        'svelte',
         'tailwindcss',
         'prismals',
       },
@@ -33,6 +33,7 @@ return {
           ensure_installed = {
             'stylua',
             'prettierd',
+            'eslint',
           },
         },
       },
