@@ -3,6 +3,7 @@ vim.o.relativenumber = true
 vim.o.mouse = 'a'
 vim.o.breakindent = true
 vim.o.signcolumn = 'yes'
+vim.o.showmode = false
 vim.o.cursorline = true
 vim.o.inccommand = 'split'
 vim.o.scrolloff = 10
