@@ -9,6 +9,7 @@ return {
         'cssls',
         'emmet_language_server',
         'ts_ls',
+        'intelephense',
         'svelte',
         'tailwindcss',
         'prismals',
