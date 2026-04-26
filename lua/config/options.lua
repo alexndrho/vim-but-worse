@@ -1,4 +1,5 @@
 vim.o.number = true
+-- test
 vim.o.relativenumber = true
 vim.o.mouse = 'a'
 vim.o.breakindent = true
